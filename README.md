@@ -4,10 +4,11 @@
 
 ### 1.1 desktop
 
+![2023-11-27 17-19-23](https://github.com/JakubZapadka/Kalendarz/assets/102255945/2e6d4f7c-ab38-4e2a-9520-18ee30ea72f4)
+
 ### 1.1 mobile
 
-![Screenshot 1](link_do_zrzutu_ekranu1.png)
-_Opis: Tutaj umieść zrzuty ekranu prezentujące interfejs użytkownika aplikacji._
+![2023-11-27 17-22-43](https://github.com/JakubZapadka/Kalendarz/assets/102255945/e4d7ce50-0d9f-42bc-982c-b2d5bf97b631)
 
 ## 2. Sekcja: Informacje
 
