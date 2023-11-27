@@ -450,7 +450,8 @@
         } else {
           node.style.height = `${childObject.duration}px`;
         }
-        node.style.width = "100px";
+        node.style.width =
+          e.target.parentNode.getBoundingClientRect().width + "px";
         e.target.style.margin = "0";
       });
       node.setAttribute("date-id", childObject.id);

@@ -30,11 +30,16 @@
         align-items: center;
         gap: 2rem;
       }
+      @media only screen and (max-width: 1200px) {
+        .main_container{
+          flex-direction: column;
+        }
+      }
     </style>
   </head>
   <body>
     <div id="app">
-    <?php include "./templates/header.php" ?>
+      <?php include "./templates/header.php" ?>
       <div class="main_container">
         <?php include "./templates/add_event.html" ?>
         <?php include "./templates/calendar.html" ?>
