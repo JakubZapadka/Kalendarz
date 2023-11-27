@@ -2,11 +2,11 @@
 
 ## 1. Sekcja: Screenshots (Zrzuty Ekranu)
 
-### 1.1 desktop
+### 1.1 wersja desktopowa
 
 ![2023-11-27 17-19-23](https://github.com/JakubZapadka/Kalendarz/assets/102255945/2e6d4f7c-ab38-4e2a-9520-18ee30ea72f4)
 
-### 1.1 mobile
+### 1.2 wersja mobilna
 
 ![2023-11-27 17-22-43](https://github.com/JakubZapadka/Kalendarz/assets/102255945/e4d7ce50-0d9f-42bc-982c-b2d5bf97b631)
 
