@@ -51,7 +51,7 @@ Dzięki temu linkowi możesz przetestować funkcjonalności kalendarza wydarzeń
    git clone https://github.com/JakubZapadka/Kalendarz
    ```
 2. Zaimportuj bazę danych używając pliku `database.sql`.
-3. Skonfiguruj plik `.env.example` zgodnie z ustawieniami Twojej lokalnej bazy danych a następnie zmień jego nazwe na `.env`.
+3. Skonfiguruj plik `.env.example` zgodnie z ustawieniami Twojej lokalnej bazy danych, a następnie zmień jego nazwę na `.env`.
 4. Uruchom aplikację na lokalnym serwerze PHP.
    ```
    php -S localhost:8000
