@@ -60,7 +60,7 @@ Dzięki temu linkowi możesz przetestować funkcjonalności kalendarza wydarzeń
 ## 7. Sekcja: Treść Poleceń
 
 Aplikacja została stworzona zgodnie z poniższymi poleceniami zadania testowego na rozmowę kwalifikacyjną:
-✔️ Stworzenie tabeli SQL zawierającej informacje o terminie, miejscu, tytule i opisie wydarzenia.
-✔️ Stworzenie strony internetowej opartej na języku PHP obsługującej kalendarz wydarzeń z formularzem do dodawania nowych wydarzeń.
-✔️ Użycie JS do walidacji danych przed przesłaniem formularza, a następnie walidacja danych w PHP przed zapisaniem wydarzenia w bazie danych.
-✔️ Wyświetlanie wydarzeń w widoku tygodniowym z możliwością dodawania i edycji wydarzeń bez konieczności przeładowania strony.
+1. Stworzenie tabeli SQL zawierającej informacje o terminie, miejscu, tytule i opisie wydarzenia.✔️
+2. Stworzenie strony internetowej opartej na języku PHP obsługującej kalendarz wydarzeń z formularzem do dodawania nowych wydarzeń.✔️
+3. Użycie JS do walidacji danych przed przesłaniem formularza, a następnie walidacja danych w PHP przed zapisaniem wydarzenia w bazie danych.✔️
+4. Wyświetlanie wydarzeń w widoku tygodniowym z możliwością dodawania i edycji wydarzeń bez konieczności przeładowania strony.✔️
