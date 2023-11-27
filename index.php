@@ -28,6 +28,7 @@
         justify-content: center;
         flex-grow: 1;
         align-items: center;
+        gap: 2rem;
       }
     </style>
   </head>

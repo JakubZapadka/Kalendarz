@@ -223,7 +223,7 @@
       } else {
         fdate_err.textContent = "";
       }
-      if (fduration == "" || fduration <= 0) {
+      if (fduration == "" || fduration <= 0 || isNaN(fduration)) {
         fduration_err.textContent = "Błędny czas trwania";
       } else if (parseInt(initialTimeInMinutes) + parseInt(fduration) > 1440) {
         fduration_err.innerHTML =

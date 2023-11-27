@@ -3,9 +3,30 @@
     width: 100%;
     overflow-y: scroll;
     height: 500px;
+    background-color: var(--bg-200);
+    padding: 1rem;
+    border-radius: 0.5rem;
   }
   #calendar .pagination {
     display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  #calendar button {
+    color: var(--bg-100);
+    background-color: var(--primary-100);
+    padding: 0.7rem;
+    border: none;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    transition: background-color 0.1s;
+  }
+  #calendar button:hover {
+    background-color: var(--accent-200);
+  }
+  #calendar button:disabled {
+    background-color: var(--text-200);
   }
   #calendar .dates_container {
     display: flex;
@@ -13,6 +34,10 @@
   }
   #calendar .dates_container div {
     width: 100px;
+    text-align: center;
+  }
+  #calendar .dates_container div:first-child {
+    width: 50px;
   }
   #calendar .events_container {
     height: 960px;
@@ -21,29 +46,109 @@
   #calendar .events_container > div {
     width: 100px;
   }
+  #calendar .events_container > div:first-child {
+    width: 50px;
+  }
   #calendar .events_container .hours {
     height: 100%;
   }
-  #calendar .events_container .hours div {
+  #calendar .events_container .hours > div {
+    text-align: center;
+  }
+  #calendar .events_container .bg,
+  #calendar .events_container .hours > div {
     height: calc(100% / 24);
   }
-  #calendar .events_container div:not(:first-child) {
+  #calendar .events_container .bg:nth-child(2n),
+  #calendar .events_container .hours > div:nth-child(2n) {
+    background-color: var(--bg-300);
+  }
+  #calendar .events_container > div:not(:first-child) {
     /* Your styles for all divs except the first one go here */
     position: relative;
+    border-left: 1px solid var(--bg-400);
   }
   #calendar .events_container .event {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
     border-radius: 0.5rem;
     background-color: var(--primary-200);
     padding: 0.5rem;
-    font-size: x-small;
+    font-size: medium;
     position: absolute;
-    transition: background-color, 0.1s;
+    transition: all, 0.2s;
     width: 100%;
     overflow: hidden;
+    color: var(--bg-100);
+    text-align: center;
+  }
+  #calendar .events_container .event * {
+    text-align: center;
+  }
+  #calendar .events_container .event input[type="datetime-local"],
+  #calendar .events_container .event #duration {
+    background-color: red;
+    border: none;
+    background-color: inherit;
+    color: inherit;
+    padding: 0.5rem;
+  }
+  #calendar .events_container .event input[type="datetime-local"] {
+    cursor: text;
+    font-size: xx-small;
+  }
+  #calendar .events_container .event .textarea {
+    display: block;
+    width: 100%;
+    padding: 0.4rem;
+  }
+  #calendar .events_container .event .textarea:hover,
+  #calendar .events_container .event input[type="datetime-local"]:hover,
+  #calendar .events_container .event #duration:hover {
+    border-radius: 0.5rem;
+    background-color: var(--accent-200);
+  }
+  #calendar .events_container .event #duration {
+    font-size: x-small;
+  }
+  #calendar .events_container .event *:focus {
+    outline: 0;
+  }
+
+  #calendar .events_container .event #description:empty::before {
+    cursor: text;
+    content: "Dodaj opis";
+    color: var(--bg-400);
+  }
+  #calendar .events_container .event #location:empty::before {
+    cursor: text;
+    content: "Dodaj lokalizację";
+    color: var(--bg-400);
+  }
+  #calendar .events_container .event #title:empty::before {
+    cursor: text;
+    content: "Dodaj tytuł";
+    color: var(--bg-400);
+  }
+  #calendar ::placeholder {
+    color: var(--bg-400);
+  }
+
+  #calendar .events_container .event > *:not(:first-child) {
+    visibility: hidden;
+  }
+  #calendar .events_container .event:hover > * {
+    visibility: visible;
   }
   #calendar .events_container .event:hover {
-    background-color: var(--accent-100);
+    background-color: var(--primary-100);
     transform: scale(1.5);
+    font-size: x-small;
+  }
+  #calendar .events_container .button_container {
+    display: flex;
+    justify-content: space-between;
   }
   #calendar #date,
   #calendar #duration {
@@ -159,6 +264,11 @@
 
         const node2 = document.createElement("div");
         node2.setAttribute("data-date", this.formatDate(futureDate));
+        for (let x = 0; x < 24; x++) {
+          const background = document.createElement("div");
+          background.classList.add("bg");
+          node2.appendChild(background);
+        }
         this.datesEventContainer.appendChild(node2);
       }
     }
@@ -274,7 +384,13 @@
 
     fetchData() {
       for (let i = 0; i < this.itemsPerPage; i++) {
-        this.datesEventContainer.childNodes[i + 3].innerHTML = "";
+        const children = this.datesEventContainer.childNodes[i + 3].children;
+        for (let y = children.length - 1; y >= 0; y--) {
+          const child = children[y];
+          if (child.classList.contains("event")) {
+            child.remove();
+          }
+        }
         for (let x = 0; x < this.dataFromAPI.length; x++) {
           if (
             this.datesEventContainer.childNodes[i + 3].getAttribute(
@@ -304,29 +420,44 @@
     renderEvent(parent, childObject) {
       const node = document.createElement("div");
       node.classList.add("event");
-      node.addEventListener("mouseenter", () => {
+      node.addEventListener("mouseenter", (e) => {
         let height = 16; //padding
         for (let i = 0; i < node.children.length; i++) {
           height += node.children[i].offsetHeight;
         }
         if (height > node.offsetHeight) {
           node.style.height = "auto";
-          node.style.zIndex = "1";
+        }
+        node.style.zIndex = "1";
+        node.style.width = "150px";
+
+        const parent = e.target.closest(".events_container");
+        const parentReact = parent.getBoundingClientRect();
+        const child = e.target;
+        const childReact = child.getBoundingClientRect();
+        //console.log(parentReact);
+        //console.log(childReact);
+        if (childReact.right + 10 > parentReact.right) {
+          child.style.marginLeft = "-90px";
+        }
+        if (childReact.left - 60 < parentReact.left) {
+          child.style.marginLeft = "37px";
         }
       });
-      node.addEventListener("mouseleave", () => {
-        node.style.zIndex = "0";
+      node.addEventListener("mouseleave", (e) => {
         if (childObject.duration < 30) {
           node.style.height = `30px`;
         } else {
           node.style.height = `${childObject.duration}px`;
         }
+        node.style.width = "100px";
+        e.target.style.margin = "0";
       });
       node.setAttribute("date-id", childObject.id);
       const hour = parseInt(childObject.date_and_time.slice(11, 13));
       const minute = parseInt(childObject.date_and_time.slice(14, 16));
       const time = hour * 60 + minute;
-      node.style.marginTop = `${parent.offsetHeight * (time / 1440)}px`;
+      node.style.top = `${parent.offsetHeight * (time / 1440)}px`;
       if (childObject.duration < 30) {
         node.style.height = `30px`;
       } else {
@@ -364,9 +495,10 @@
       const duration = document.createElement("div");
       duration.innerHTML = `<i class="fa-solid fa-hourglass"></i>`;
       const durationInput = document.createElement("input");
-      durationInput.setAttribute("type", "text");
+      durationInput.setAttribute("type", "number");
       durationInput.setAttribute("name", "duration");
       durationInput.setAttribute("id", "duration");
+      durationInput.placeholder = "Dodaj czas trwania (min)";
       durationInput.value = childObject.duration;
       duration.appendChild(durationInput);
 
@@ -393,6 +525,7 @@
       description.appendChild(descriptionInput);
 
       const buttonContainer = document.createElement("div");
+      buttonContainer.classList.add("button_container");
 
       const editButton = document.createElement("button");
       editButton.innerHTML = "Zapisz";
@@ -448,7 +581,7 @@
       parent.appendChild(node);
     }
     editEvent(e) {
-      const parent = e.target.offsetParent.offsetParent;
+      const parent = e.target.closest(".event");
       const id = parent.getAttribute("date-id");
 
       const title = parent.querySelector("#title").textContent;
@@ -495,6 +628,7 @@
           .then((res) => res.json())
           .then((data) => {
             parent.remove();
+            console.log(parent);
             calendar.dataFromAPI = removeObjectWithId(calendar.dataFromAPI, id);
             currentlyAddedEvents = removeObjectWithId(
               currentlyAddedEvents,
