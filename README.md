@@ -44,7 +44,7 @@ Aplikację Kalendarz możesz obejrzeć online, korzystając z poniższego linku:
 
 Dzięki temu linkowi możesz przetestować funkcjonalności kalendarza wydarzeń bez konieczności instalacji lokalnej kopii. Otwórz przeglądarkę internetową i przejdź do powyższego adresu, aby zobaczyć, jak działa aplikacja online. Możesz dodawać, przeglądać i edytować wydarzenia, sprawdzając, czy spełnia Twoje oczekiwania.
 
-## 6. Sekcja: How to Install (Local)
+## 6. Sekcja: Jak Zainstalować (Lokalnie)
 
 1. Sklonuj repozytorium na swoje lokalne urządzenie.
    ```
