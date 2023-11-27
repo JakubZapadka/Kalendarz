@@ -39,12 +39,12 @@
   </head>
   <body>
     <div id="app">
-      <?php include "./templates/header.php" ?>
+      <?php include "./templates/header.html" ?>
       <div class="main_container">
         <?php include "./templates/add_event.html" ?>
         <?php include "./templates/calendar.html" ?>
       </div>
-      <?php include "./templates/footer.php" ?>
+      <?php include "./templates/footer.html" ?>
     </div>
   </body>
 </html>

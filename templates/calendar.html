@@ -51,6 +51,11 @@
   }
   #calendar .events_container .hours {
     height: 100%;
+    pointer-events: none;
+    -webkit-user-select: none; /* Chrome, Safari, Opera */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none;
   }
   #calendar .events_container .hours > div {
     text-align: center;
@@ -156,6 +161,14 @@
   }
   #calendar .error {
     color: red;
+  }
+  @media only screen and (max-width: 850px) {
+    .container {
+      width: 100%;
+    }
+    #calendar .events_container .event:hover {
+      transform: scale(1);
+    }
   }
 </style>
 
