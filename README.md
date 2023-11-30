@@ -2,12 +2,13 @@
 
 ## 1. Sekcja: Screenshots (Zrzuty Ekranu)
 
-### 1.1 desktop
+### 1.1 wersja desktopowa
 
-### 1.1 mobile
+![2023-11-27 17-19-23](https://github.com/JakubZapadka/Kalendarz/assets/102255945/2e6d4f7c-ab38-4e2a-9520-18ee30ea72f4)
 
-![Screenshot 1](link_do_zrzutu_ekranu1.png)
-_Opis: Tutaj umieść zrzuty ekranu prezentujące interfejs użytkownika aplikacji._
+### 1.2 wersja mobilna
+
+![2023-11-27 17-22-43](https://github.com/JakubZapadka/Kalendarz/assets/102255945/e4d7ce50-0d9f-42bc-982c-b2d5bf97b631)
 
 ## 2. Sekcja: Informacje
 
@@ -43,14 +44,14 @@ Aplikację Kalendarz możesz obejrzeć online, korzystając z poniższego linku:
 
 Dzięki temu linkowi możesz przetestować funkcjonalności kalendarza wydarzeń bez konieczności instalacji lokalnej kopii. Otwórz przeglądarkę internetową i przejdź do powyższego adresu, aby zobaczyć, jak działa aplikacja online. Możesz dodawać, przeglądać i edytować wydarzenia, sprawdzając, czy spełnia Twoje oczekiwania.
 
-## 6. Sekcja: How to Install (Local)
+## 6. Sekcja: Jak Zainstalować (Lokalnie)
 
 1. Sklonuj repozytorium na swoje lokalne urządzenie.
    ```
    git clone https://github.com/JakubZapadka/Kalendarz
    ```
 2. Zaimportuj bazę danych używając pliku `database.sql`.
-3. Skonfiguruj plik `env.php` zgodnie z ustawieniami Twojej lokalnej bazy danych.
+3. Skonfiguruj plik `.env.example` zgodnie z ustawieniami Twojej lokalnej bazy danych, a następnie zmień jego nazwę na `.env`.
 4. Uruchom aplikację na lokalnym serwerze PHP.
    ```
    php -S localhost:8000
@@ -60,7 +61,7 @@ Dzięki temu linkowi możesz przetestować funkcjonalności kalendarza wydarzeń
 ## 7. Sekcja: Treść Poleceń
 
 Aplikacja została stworzona zgodnie z poniższymi poleceniami zadania testowego na rozmowę kwalifikacyjną:
-✔️ Stworzenie tabeli SQL zawierającej informacje o terminie, miejscu, tytule i opisie wydarzenia.
-✔️ Stworzenie strony internetowej opartej na języku PHP obsługującej kalendarz wydarzeń z formularzem do dodawania nowych wydarzeń.
-✔️ Użycie JS do walidacji danych przed przesłaniem formularza, a następnie walidacja danych w PHP przed zapisaniem wydarzenia w bazie danych.
-✔️ Wyświetlanie wydarzeń w widoku tygodniowym z możliwością dodawania i edycji wydarzeń bez konieczności przeładowania strony.
+1. Stworzenie tabeli SQL zawierającej informacje o terminie, miejscu, tytule i opisie wydarzenia.✔️
+2. Stworzenie strony internetowej opartej na języku PHP obsługującej kalendarz wydarzeń z formularzem do dodawania nowych wydarzeń.✔️
+3. Użycie JS do walidacji danych przed przesłaniem formularza, a następnie walidacja danych w PHP przed zapisaniem wydarzenia w bazie danych.✔️
+4. Wyświetlanie wydarzeń w widoku tygodniowym z możliwością dodawania i edycji wydarzeń bez konieczności przeładowania strony.✔️
